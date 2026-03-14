@@ -1,0 +1,315 @@
+/* ========================================
+   Keyframe Animations
+   ======================================== */
+
+/* Curtain Slide - reveals content by sliding a cover to the right */
+@keyframes curtain-slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(101%);
+  }
+}
+
+/* Ken Burns - subtle zoom and pan effect for images */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+/* Shimmer - loading placeholder effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Fade In Up */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Down */
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Left */
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade In Right */
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale Line (for timeline) */
+@keyframes scale-line {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Scale Dot */
+@keyframes scale-dot {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   Curtain Reveal
+   ======================================== */
+.curtain-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.curtain-reveal .curtain {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-cream);
+  z-index: 2;
+  transform: translateX(0%);
+}
+
+.curtain-reveal.is-visible .curtain {
+  animation: curtain-slide 0.9s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Ken Burns on revealed images */
+.curtain-reveal.is-visible img {
+  animation: ken-burns 20s ease-in-out infinite;
+}
+
+/* ========================================
+   Scroll Reveal
+   ======================================== */
+.scroll-reveal {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.scroll-reveal.reveal-up {
+  transform: translateY(40px);
+}
+
+.scroll-reveal.reveal-down {
+  transform: translateY(-40px);
+}
+
+.scroll-reveal.reveal-left {
+  transform: translateX(40px);
+}
+
+.scroll-reveal.reveal-right {
+  transform: translateX(-40px);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Staggered delays for children */
+.scroll-reveal.is-visible[data-delay="100"] { transition-delay: 0.1s; }
+.scroll-reveal.is-visible[data-delay="200"] { transition-delay: 0.2s; }
+.scroll-reveal.is-visible[data-delay="300"] { transition-delay: 0.3s; }
+.scroll-reveal.is-visible[data-delay="400"] { transition-delay: 0.4s; }
+.scroll-reveal.is-visible[data-delay="500"] { transition-delay: 0.5s; }
+.scroll-reveal.is-visible[data-delay="600"] { transition-delay: 0.6s; }
+.scroll-reveal.is-visible[data-delay="700"] { transition-delay: 0.7s; }
+
+/* ========================================
+   Split Text Animation
+   ======================================== */
+.split-text .char,
+.split-text .word {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.split-text .char-inner,
+.split-text .word-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.split-text.is-visible .char-inner,
+.split-text.is-visible .word-inner {
+  transform: translateY(0);
+}
+
+/* Whitespace preservation */
+.split-text .word {
+  margin-right: 0.3em;
+}
+
+.split-text .word:last-child {
+  margin-right: 0;
+}
+
+/* ========================================
+   Parallax
+   ======================================== */
+.parallax-element {
+  will-change: transform;
+}
+
+/* ========================================
+   Process Timeline Animations
+   ======================================== */
+.process-step {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.process-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger process steps */
+.process-step.is-visible:nth-child(1) { transition-delay: 0s; }
+.process-step.is-visible:nth-child(2) { transition-delay: 0.2s; }
+.process-step.is-visible:nth-child(3) { transition-delay: 0.4s; }
+.process-step.is-visible:nth-child(4) { transition-delay: 0.6s; }
+
+/* Process timeline line animation */
+.process-step::before {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.6s ease;
+}
+
+.process-step.is-visible::before {
+  transform: scaleY(1);
+}
+
+/* Process dot animation */
+.process-step::after {
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.process-step.is-visible::after {
+  transform: scale(1);
+  transition-delay: 0.2s;
+}
+
+/* ========================================
+   Hover Effects
+   ======================================== */
+
+/* Magnetic button hover area */
+.magnetic-btn {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Link underline hover effect */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ========================================
+   Shimmer / Loading
+   ======================================== */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 169, 110, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ========================================
+   Reduced Motion Override
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .split-text .char-inner,
+  .split-text .word-inner,
+  .curtain-reveal .curtain,
+  .process-step {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+
+  .curtain-reveal .curtain {
+    display: none;
+  }
+}

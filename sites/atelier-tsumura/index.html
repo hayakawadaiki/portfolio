@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier tsumura | Web Engineer つむら ポートフォリオ</title>
+  <meta name="description" content="洗練されたデザインと確かな技術で、あなたの世界観をWebサイトに。イラストレーター・クリエイター向けのポートフォリオサイト制作。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- ========================================
+       Custom Cursor
+       ======================================== -->
+  <div class="custom-cursor default" id="customCursor" aria-hidden="true">
+    <span class="custom-cursor-text" id="cursorText"></span>
+  </div>
+
+  <!-- ========================================
+       Header
+       ======================================== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="header-logo magnetic-btn">Atelier tsumura</a>
+
+      <nav class="header-nav" aria-label="メインナビゲーション">
+        <a href="#works" class="nav-link magnetic-btn">Works</a>
+        <a href="#about" class="nav-link magnetic-btn">About</a>
+        <a href="#process" class="nav-link magnetic-btn">Process</a>
+        <a href="#contact" class="nav-link magnetic-btn">Contact</a>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="メニューを開く" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="モバイルメニュー">
+    <a href="#works" class="mobile-menu-link">Works</a>
+    <a href="#about" class="mobile-menu-link">About</a>
+    <a href="#process" class="mobile-menu-link">Process</a>
+    <a href="#contact" class="mobile-menu-link">Contact</a>
+  </div>
+
+  <!-- ========================================
+       Main Content
+       ======================================== -->
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1 class="hero-title split-text" data-split="char">Atelier tsumura</h1>
+        <p class="hero-subtitle scroll-reveal reveal-up" data-delay="200">Web Engineer Portfolio</p>
+        <p class="hero-description scroll-reveal reveal-up" data-delay="300">
+          洗練されたデザインと確かな技術で、あなたの世界観をWebサイトに。イラストレーター・クリエイター向けのポートフォリオ制作。
+        </p>
+        <div class="hero-cta scroll-reveal reveal-up" data-delay="400">
+          <a href="#works" class="btn-primary magnetic-btn">
+            <span>作品を見る</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#contact" class="btn-secondary magnetic-btn">
+            <span>お問い合わせ</span>
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-grid-item curtain-reveal" data-parallax="-0.15">
+          <div class="curtain"></div>
+          <img src="images/hitoyasumi.webp" alt="ヒトヤスミ" width="600" height="800" fetchpriority="high">
+        </div>
+        <div class="hero-grid-item curtain-reveal" data-parallax="0.1">
+          <div class="curtain"></div>
+          <img src="images/embu.webp" alt="エンブ" width="600" height="600" fetchpriority="high">
+        </div>
+        <div class="hero-grid-item curtain-reveal" data-parallax="0.1">
+          <div class="curtain"></div>
+          <img src="images/tomare.webp" alt="止まれ" width="600" height="600" loading="lazy" decoding="async">
+        </div>
+        <div class="hero-grid-item curtain-reveal" data-parallax="-0.15">
+          <div class="curtain"></div>
+          <img src="images/aglaonema.webp" alt="アグラオネマ" width="600" height="800" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        <span class="scroll-indicator-text">Scroll</span>
+        <div class="scroll-indicator-line"></div>
+      </div>
+    </section>
+
+    <!-- Works Section -->
+    <section class="works" id="works">
+      <div class="works-inner">
+        <h2 class="section-title split-text" data-split="char">Works</h2>
+
+        <div class="works-grid">
+          <div class="work-card scroll-reveal reveal-up" data-cursor="View" data-work="akahata">
+            <img class="work-card-image" src="images/akahata.webp" alt="アカハタ - 書籍装画" width="600" height="800" loading="lazy" decoding="async">
+            <div class="work-card-overlay">
+              <h3 class="work-card-title">アカハタ</h3>
+              <p class="work-card-category">書籍装画</p>
+            </div>
+          </div>
+
+          <div class="work-card scroll-reveal reveal-up" data-delay="100" data-cursor="View" data-work="aglaonema">
+            <img class="work-card-image" src="images/aglaonema.webp" alt="アグラオネマ - ブランディング" width="600" height="600" loading="lazy" decoding="async">
+            <div class="work-card-overlay">
+              <h3 class="work-card-title">アグラオネマ</h3>
+              <p class="work-card-category">ブランディング</p>
+            </div>
+          </div>
+
+          <div class="work-card scroll-reveal reveal-up" data-delay="200" data-cursor="View" data-work="unplugged">
+            <img class="work-card-image" src="images/unplugged.webp" alt="アンプリュック - エディトリアル" width="600" height="600" loading="lazy" decoding="async">
+            <div class="work-card-overlay">
+              <h3 class="work-card-title">アンプリュック</h3>
+              <p class="work-card-category">エディトリアル</p>
+            </div>
+          </div>
+
+          <div class="work-card scroll-reveal reveal-up" data-delay="100" data-cursor="View" data-work="guitar-crash">
+            <img class="work-card-image" src="images/guitar-crash.webp" alt="ギタークラッシュ - 広告" width="800" height="600" loading="lazy" decoding="async">
+            <div class="work-card-overlay">
+              <h3 class="work-card-title">ギタークラッシュ</h3>
+              <p class="work-card-category">広告</p>
+            </div>
+          </div>
+
+          <div class="work-card scroll-reveal reveal-up" data-delay="200" data-cursor="View" data-work="kumorinochi">
+            <img class="work-card-image" src="images/kumorinochi.webp" alt="クモリノチ - パッケージ" width="800" height="600" loading="lazy" decoding="async">
+            <div class="work-card-overlay">
+              <h3 class="work-card-title">クモリノチ</h3>
+              <p class="work-card-category">パッケージ</p>
+            </div>
+          </div>
+
+          <div class="work-card scroll-reveal reveal-up" data-delay="300" data-cursor="View" data-work="koiwazurai">
+            <img class="work-card-image" src="images/koiwazurai.webp" alt="コイワズライ - 書籍装画" width="600" height="600" loading="lazy" decoding="async">
+            <div class="work-card-overlay">
+              <h3 class="work-card-title">コイワズライ</h3>
+              <p class="work-card-category">書籍装画</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="works-credit">
+          Illustrations by <a href="https://x.com/teasodart" target="_blank" rel="noopener noreferrer">TeaSoda (@teasodart)</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Inline CTA -->
+    <section class="inline-cta">
+      <div class="parallax-element" data-parallax="-0.1">
+        <p class="inline-cta-text split-text" data-split="char">あなたの作品も、こんなサイトで。</p>
+        <a href="#contact" class="inline-cta-link magnetic-btn">無料相談はこちら</a>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="testimonials-inner">
+        <h2 class="section-title split-text" data-split="char">Voice</h2>
+
+        <div class="testimonials-carousel" role="tablist" aria-label="お客さまの声">
+          <div class="testimonials-track" id="testimonialsTrack">
+
+            <div class="testimonial-slide" role="tabpanel">
+              <div class="testimonial-card">
+                <blockquote class="testimonial-quote">
+                  作品の世界観をここまでWebで表現できるとは思いませんでした。細部のアニメーションや色使いまで丁寧に作り込んでくださり、ポートフォリオの反響が格段に上がりました。
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar blush">S</div>
+                  <div>
+                    <p class="testimonial-name">サンプル 太郎</p>
+                    <p class="testimonial-role">イラストレーター</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide" role="tabpanel">
+              <div class="testimonial-card">
+                <blockquote class="testimonial-quote">
+                  こちらの漠然としたイメージを汲み取って、期待以上のサイトに仕上げていただきました。公開後すぐにSNSで話題になり、新規のお仕事の問い合わせが増えました。
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar sage">S</div>
+                  <div>
+                    <p class="testimonial-name">サンプル 花子</p>
+                    <p class="testimonial-role">デザイナー</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide" role="tabpanel">
+              <div class="testimonial-card">
+                <blockquote class="testimonial-quote">
+                  技術的なことがわからない私にも、わかりやすく丁寧に進めてくださいました。レスポンシブ対応やSEOまで考慮されていて、安心してお任せできました。
+                </blockquote>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar dust">S</div>
+                  <div>
+                    <p class="testimonial-name">サンプル 次郎</p>
+                    <p class="testimonial-role">イラストレーター</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="testimonials-dots" id="testimonialsDots">
+          <button class="testimonials-dot active" data-index="0" aria-label="スライド 1"></button>
+          <button class="testimonials-dot" data-index="1" aria-label="スライド 2"></button>
+          <button class="testimonials-dot" data-index="2" aria-label="スライド 3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="about-inner">
+        <div class="about-image-wrapper curtain-reveal">
+          <div class="curtain"></div>
+          <img src="images/hitoyasumi.webp" alt="つむら プロフィール" width="600" height="800" loading="lazy" decoding="async">
+        </div>
+
+        <div class="about-text-content">
+          <p class="about-label scroll-reveal reveal-up">About</p>
+          <h2 class="about-heading split-text" data-split="char">つむら について</h2>
+          <p class="about-text scroll-reveal reveal-up" data-delay="100">
+            クリエイターの世界観を最大限に引き出すWebサイトを手がけています。
+          </p>
+          <p class="about-text scroll-reveal reveal-up" data-delay="200">
+            ポートフォリオサイト、コーポレートサイト、LPなど、幅広いWeb制作でクリエイターやブランドの想いを形にしてきました。デザインから実装まで一貫してお任せいただけます。
+          </p>
+
+          <div class="about-stats scroll-reveal reveal-up" data-delay="300">
+            <div class="stat">
+              <p class="stat-number" data-count="8">00</p>
+              <p class="stat-label">Years Experience</p>
+            </div>
+            <div class="stat">
+              <p class="stat-number" data-count="140" data-suffix="+">000</p>
+              <p class="stat-label">Projects</p>
+            </div>
+            <div class="stat">
+              <p class="stat-number" data-count="30" data-suffix="+">00</p>
+              <p class="stat-label">Clients</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+      <div class="process-inner">
+        <h2 class="section-title split-text" data-split="char">Process</h2>
+
+        <div class="process-timeline">
+          <div class="process-step">
+            <p class="process-step-number">01</p>
+            <h3 class="process-step-title">ヒアリング</h3>
+            <p class="process-step-text">ご要望・世界観・ターゲットをじっくりお聞きします。初回のご相談は無料です。</p>
+          </div>
+
+          <div class="process-step">
+            <p class="process-step-number">02</p>
+            <h3 class="process-step-title">デザイン提案</h3>
+            <p class="process-step-text">サイトの構成案とデザインカンプを提示し、レイアウト・配色・トーンの方向性をすり合わせます。</p>
+          </div>
+
+          <div class="process-step">
+            <p class="process-step-number">03</p>
+            <h3 class="process-step-title">開発・修正</h3>
+            <p class="process-step-text">確定したデザインをもとにコーディング・実装を進めます。やり取りを重ねながら、理想の仕上がりに近づけます。</p>
+          </div>
+
+          <div class="process-step">
+            <p class="process-step-number">04</p>
+            <h3 class="process-step-title">納品</h3>
+            <p class="process-step-text">テスト・最終確認を経て公開します。公開後の軽微な修正や運用サポートにも対応できます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="contact-inner">
+        <h2 class="section-title split-text" data-split="char">Contact</h2>
+        <p class="contact-subtitle scroll-reveal reveal-up">
+          お仕事のご依頼・ご相談はお気軽に。2営業日以内にお返事します。
+        </p>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="name">お名前</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="山田 太郎" required>
+            <span class="form-error">お名前を入力してください</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">メールアドレス</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="hello@example.com" required>
+            <span class="form-error">正しいメールアドレスを入力してください</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="service">ご依頼の種別</label>
+            <select class="form-select" id="service" name="service">
+              <option value="">選択してください</option>
+              <option value="portfolio">ポートフォリオサイト</option>
+              <option value="corporate">コーポレートサイト</option>
+              <option value="lp">LP制作</option>
+              <option value="ec">ECサイト</option>
+              <option value="renewal">既存サイトのリニューアル</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">メッセージ</label>
+            <textarea class="form-textarea" id="message" name="message" rows="5" placeholder="ご依頼の概要をお聞かせください（ご予算・納期のご希望など）"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit magnetic-btn">
+            <span>送信する</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✓</div>
+          <p class="form-success-title">ありがとうございます</p>
+          <p class="form-success-text">メッセージを受け付けました。2営業日以内にご連絡いたします。</p>
+        </div>
+
+        <p class="contact-email">
+          または <a href="mailto:hello@atelier-tsumura.com">hello@atelier-tsumura.com</a> まで
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================
+       Footer
+       ======================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="#" class="footer-logo magnetic-btn">Atelier tsumura</a>
+
+      <div class="footer-social">
+        <a href="#" class="footer-social-link magnetic-btn" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="#" class="footer-social-link magnetic-btn" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="#" class="footer-social-link magnetic-btn" target="_blank" rel="noopener noreferrer">Behance</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Atelier tsumura. All rights reserved.</p>
+        <p class="footer-credit">Illustrations by <a href="https://x.com/teasodart" target="_blank" rel="noopener noreferrer">TeaSoda (@teasodart)</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================
+       Mobile CTA
+       ======================================== -->
+  <div class="mobile-cta" id="mobileCta">
+    <a href="#contact" class="mobile-cta-btn magnetic-btn">
+      <span>相談する</span>
+      <span class="btn-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- ========================================
+       Lightbox Modal
+       ======================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="画像プレビュー" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="閉じる">&times;</button>
+      <img class="lightbox-image" id="lightboxImage" src="" alt="">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
