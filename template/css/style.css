@@ -1,0 +1,30 @@
+/* ========================================
+   CSS Custom Properties (Contract Variables)
+   ======================================== */
+:root {
+  /* --- Shared reset.css contract --- */
+  --c-font-body: 'Noto Sans JP', sans-serif;
+  --c-bg: #ffffff;
+  --c-text: #1a1a1a;
+  --c-accent: #3b82f6;
+  --c-selection: rgba(59, 130, 246, 0.2);
+
+  /* --- Shared form.css contract --- */
+  --c-font-display: 'Noto Sans JP', sans-serif;
+  --c-form-label: #555555;
+  --c-input-bg: #f9fafb;
+  --c-input-border: #d1d5db;
+  --c-input-radius: 6px;
+  --c-input-focus-bg: #ffffff;
+  --c-input-focus-border: #3b82f6;
+  --c-input-placeholder: #9ca3af;
+  --c-error: #ef4444;
+  --c-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --c-select-option-bg: #ffffff;
+  --c-select-option-text: #1a1a1a;
+  --c-text-secondary: #6b7280;
+}
+
+/* ========================================
+   Site-specific styles go here
+   ======================================== */

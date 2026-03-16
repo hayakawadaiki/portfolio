@@ -15,45 +15,40 @@
 
   --font-cormorant: 'Cormorant Garamond', serif;
   --font-zen: 'Zen Kaku Gothic New', sans-serif;
+
+  /* --- Shared reset.css contract --- */
+  --c-font-body: var(--font-zen);
+  --c-bg: var(--color-cream);
+  --c-text: var(--color-ink);
+  --c-accent: var(--color-gold);
+  --c-selection: rgba(232, 196, 176, 0.6);
+
+  /* --- Shared form.css contract --- */
+  --c-font-display: var(--font-cormorant);
+  --c-form-label: var(--color-cream);
+  --c-input-bg: rgba(255, 255, 255, 0.12);
+  --c-input-border: rgba(255, 255, 255, 0.2);
+  --c-input-radius: 2px;
+  --c-input-focus-bg: rgba(255, 255, 255, 0.18);
+  --c-input-focus-border: var(--color-cream);
+  --c-input-placeholder: rgba(245, 240, 232, 0.4);
+  --c-error: var(--color-blush);
+  --c-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F5F0E8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --c-select-option-bg: var(--color-charcoal);
+  --c-select-option-text: var(--color-cream);
+  --c-text-secondary: rgba(245, 240, 232, 0.8);
 }
 
 /* ========================================
-   Reset & Base
+   Site-specific Base Overrides
    ======================================== */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
-  scroll-behavior: smooth;
   cursor: none;
 }
 
 body {
-  font-family: var(--font-zen);
   font-weight: 300;
-  color: var(--color-ink);
-  background-color: var(--color-cream);
-  line-height: 1.7;
-  overflow-x: hidden;
   cursor: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 button {
@@ -61,14 +56,6 @@ button {
   background: none;
   cursor: none;
   font-family: inherit;
-}
-
-ul, ol {
-  list-style: none;
-}
-
-::selection {
-  background-color: var(--color-blush);
 }
 
 /* Scrollbar */
@@ -84,12 +71,6 @@ ul, ol {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-gold);
-}
-
-/* Focus */
-*:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 2px;
 }
 
 /* ========================================
@@ -1066,78 +1047,11 @@ ul, ol {
   gap: 1.5rem;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-label {
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: var(--color-cream);
-}
-
 .form-input,
 .form-select,
 .form-textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background-color: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-  color: var(--color-cream);
-  font-family: var(--font-zen);
-  font-size: 0.875rem;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
   cursor: none;
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: rgba(245, 240, 232, 0.4);
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--color-cream);
-  background-color: rgba(255, 255, 255, 0.18);
-}
-
-.form-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F5F0E8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  padding-right: 2.5rem;
-}
-
-.form-select option {
-  background-color: var(--color-charcoal);
   color: var(--color-cream);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 8rem;
-}
-
-.form-error {
-  font-size: 0.75rem;
-  color: var(--color-blush);
-  display: none;
-}
-
-.form-group.has-error .form-error {
-  display: block;
-}
-
-.form-group.has-error .form-input,
-.form-group.has-error .form-select,
-.form-group.has-error .form-textarea {
-  border-color: var(--color-blush);
 }
 
 /* Submit Button */
@@ -1159,34 +1073,6 @@ ul, ol {
 .form-submit:hover {
   background-color: var(--color-ink);
   color: var(--color-cream);
-}
-
-/* Form Success */
-.form-success {
-  text-align: center;
-  padding: 3rem 1.5rem;
-  display: none;
-}
-
-.form-success.active {
-  display: block;
-}
-
-.form-success-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.form-success-title {
-  font-family: var(--font-cormorant);
-  font-size: 1.5rem;
-  color: var(--color-cream);
-  margin-bottom: 0.5rem;
-}
-
-.form-success-text {
-  font-size: 0.875rem;
-  color: rgba(245, 240, 232, 0.8);
 }
 
 /* Contact Email */
@@ -1326,7 +1212,7 @@ ul, ol {
   border-radius: 50%;
   border: 2px solid var(--color-ink);
   background-color: rgba(26, 20, 16, 0.12);
-  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
   opacity: 0;
 }
 
@@ -1368,6 +1254,21 @@ ul, ol {
   opacity: 1;
 }
 
+/* Cursor light theme (for dark backgrounds) */
+.custom-cursor.cursor-light {
+  border-color: var(--color-cream);
+  background-color: rgba(245, 240, 232, 0.12);
+}
+.custom-cursor.cursor-light.interactive {
+  background-color: rgba(201, 169, 110, 0.2);
+}
+.custom-cursor.cursor-light.expanded {
+  background-color: rgba(201, 169, 110, 0.15);
+}
+.custom-cursor.cursor-light .custom-cursor-text {
+  color: var(--color-cream);
+}
+
 /* Touch devices */
 @media (hover: none) and (pointer: coarse) {
   html, body, button, .work-card, .lightbox-close, .testimonials-dot, .form-input, .form-select, .form-textarea {
@@ -1378,34 +1279,3 @@ ul, ol {
   }
 }
 
-/* ========================================
-   Reduced Motion
-   ======================================== */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* ========================================
-   Utilities
-   ======================================== */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Title</title>
+  <meta name="description" content="サイトの説明">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../shared/css/reset.css">
+  <link rel="stylesheet" href="../shared/css/form.css">
+  <link rel="stylesheet" href="../shared/css/scroll-reveal.css">
+
+  <!-- Site-specific CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header">
+    <nav aria-label="メインナビゲーション">
+      <a href="#">Logo</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="mobileMenuBtn" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" aria-hidden="true">
+    <a href="#contact" class="mobile-menu-link">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="scroll-reveal reveal-up">
+      <h1>Site Title</h1>
+      <p>サイトの説明文</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="scroll-reveal reveal-up">Contact</h2>
+
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+      <form id="contactForm" action="YOUR_GOOGLE_FORM_URL" method="POST" target="hidden_iframe" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="name">お名前</label>
+          <input class="form-input" type="text" id="name" name="entry.XXXXX" placeholder="山田 太郎" required>
+          <span class="form-error">お名前を入力してください</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">メールアドレス</label>
+          <input class="form-input" type="email" id="email" name="entry.XXXXX" placeholder="hello@example.com" required>
+          <span class="form-error">正しいメールアドレスを入力してください</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">メッセージ</label>
+          <textarea class="form-textarea" id="message" name="entry.XXXXX" rows="5" placeholder="メッセージをお書きください"></textarea>
+        </div>
+
+        <button type="submit">送信する</button>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">✓</div>
+        <p class="form-success-title">ありがとうございます</p>
+        <p class="form-success-text">メッセージを受け付けました。</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Your Name. All rights reserved.</p>
+  </footer>
+
+  <!-- Shared JS -->
+  <script src="../shared/js/shared.js"></script>
+  <!-- Site-specific JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

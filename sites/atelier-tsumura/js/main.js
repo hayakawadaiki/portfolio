@@ -7,95 +7,6 @@
   'use strict';
 
   // ========================================
-  // Header Scroll Effect & Progress Bar
-  // ========================================
-  function initHeader() {
-    const header = document.getElementById('header');
-    const scrollProgress = document.getElementById('scrollProgress');
-
-    if (!header) return;
-
-    function updateHeader() {
-      const scrollY = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? scrollY / docHeight : 0;
-
-      // Background blur on scroll
-      if (scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-
-      // Progress bar
-      if (scrollProgress) {
-        scrollProgress.style.transform = `scaleX(${progress})`;
-      }
-    }
-
-    window.addEventListener('scroll', updateHeader, { passive: true });
-    updateHeader();
-  }
-
-  // ========================================
-  // Mobile Navigation
-  // ========================================
-  function initMobileNav() {
-    const btn = document.getElementById('mobileMenuBtn');
-    const menu = document.getElementById('mobileMenu');
-    const links = menu ? menu.querySelectorAll('.mobile-menu-link') : [];
-
-    if (!btn || !menu) return;
-
-    let isOpen = false;
-
-    function toggleMenu() {
-      isOpen = !isOpen;
-      btn.classList.toggle('active', isOpen);
-      menu.classList.toggle('active', isOpen);
-      btn.setAttribute('aria-expanded', String(isOpen));
-      btn.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
-
-      // Lock body scroll
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    }
-
-    function closeMenu() {
-      if (!isOpen) return;
-      isOpen = false;
-      btn.classList.remove('active');
-      menu.classList.remove('active');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.setAttribute('aria-label', 'メニューを開く');
-      document.body.style.overflow = '';
-    }
-
-    btn.addEventListener('click', toggleMenu);
-
-    links.forEach((link) => {
-      link.addEventListener('click', closeMenu);
-    });
-  }
-
-  // ========================================
-  // Smooth Scroll
-  // ========================================
-  function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        const targetId = anchor.getAttribute('href');
-        if (targetId === '#') return;
-
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  }
-
-  // ========================================
   // Custom Cursor
   // ========================================
   function initCustomCursor() {
@@ -320,71 +231,6 @@
   }
 
   // ========================================
-  // Contact Form Validation
-  // ========================================
-  function initContactForm() {
-    const form = document.getElementById('contactForm');
-    const success = document.getElementById('formSuccess');
-
-    if (!form) return;
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const hiddenIframe = document.getElementById('hidden_iframe');
-
-    form.addEventListener('submit', (e) => {
-      let isValid = true;
-
-      // Validate name
-      const nameField = form.querySelector('#name');
-      const nameGroup = nameField.closest('.form-group');
-      if (!nameField.value.trim()) {
-        nameGroup.classList.add('has-error');
-        isValid = false;
-      } else {
-        nameGroup.classList.remove('has-error');
-      }
-
-      // Validate email
-      const emailField = form.querySelector('#email');
-      const emailGroup = emailField.closest('.form-group');
-      if (!emailRegex.test(emailField.value.trim())) {
-        emailGroup.classList.add('has-error');
-        isValid = false;
-      } else {
-        emailGroup.classList.remove('has-error');
-      }
-
-      if (!isValid) {
-        e.preventDefault();
-        return;
-      }
-
-      // Valid: let the form submit natively to hidden iframe
-    });
-
-    if (hiddenIframe) {
-      hiddenIframe.addEventListener('load', () => {
-        // Skip the initial empty load
-        if (!form.dataset.submitted) return;
-        form.style.display = 'none';
-        if (success) success.classList.add('active');
-      });
-
-      form.addEventListener('submit', () => {
-        form.dataset.submitted = 'true';
-      });
-    }
-
-    // Remove error on input
-    form.querySelectorAll('.form-input, .form-select, .form-textarea').forEach((input) => {
-      input.addEventListener('input', () => {
-        input.closest('.form-group').classList.remove('has-error');
-      });
-    });
-  }
-
-  // ========================================
   // Mobile CTA
   // ========================================
   function initMobileCTA() {
@@ -409,14 +255,31 @@
   // Initialize All
   // ========================================
   function init() {
-    initHeader();
-    initMobileNav();
-    initSmoothScroll();
+    // Shared modules
+    var scrollProgress = document.getElementById('scrollProgress');
+    Portfolio.initHeader({
+      headerId: 'header',
+      onScroll: function (scrollY) {
+        if (scrollProgress) {
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          var progress = docHeight > 0 ? scrollY / docHeight : 0;
+          scrollProgress.style.transform = 'scaleX(' + progress + ')';
+        }
+      }
+    });
+    Portfolio.initMobileNav({
+      btnId: 'mobileMenuBtn',
+      menuId: 'mobileMenu',
+      linkSelector: '.mobile-menu-link'
+    });
+    Portfolio.initSmoothScroll();
+    Portfolio.initContactForm();
+
+    // Site-specific modules
     initCustomCursor();
     initMagneticButtons();
     initLightbox();
     initTestimonials();
-    initContactForm();
     initMobileCTA();
   }
 

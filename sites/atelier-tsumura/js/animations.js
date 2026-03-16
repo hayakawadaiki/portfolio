@@ -8,30 +8,6 @@
   'use strict';
 
   // ========================================
-  // Scroll Reveal (IntersectionObserver)
-  // ========================================
-  function initScrollReveal() {
-    const elements = document.querySelectorAll('.scroll-reveal');
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px',
-      }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-  }
-
-  // ========================================
   // Curtain Reveal (IntersectionObserver)
   // ========================================
   function initCurtainReveal() {
@@ -244,7 +220,7 @@
   // ========================================
   function init() {
     initSplitText();
-    initScrollReveal();
+    Portfolio.initScrollReveal();
     initCurtainReveal();
     initParallax();
     initCountUp();

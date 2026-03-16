@@ -41,58 +41,44 @@
   --duration-fast: 200ms;
   --duration-normal: 350ms;
   --duration-slow: 600ms;
+
+  /* --- Shared reset.css contract --- */
+  --c-font-body: var(--font-body);
+  --c-bg: var(--bg-primary);
+  --c-text: var(--text-primary);
+  --c-accent: var(--accent);
+  --c-selection: rgba(94, 234, 212, 0.2);
+
+  /* --- Shared form.css contract --- */
+  --c-font-display: var(--font-display);
+  --c-form-label: var(--text-secondary);
+  --c-input-bg: rgba(255, 255, 255, 0.04);
+  --c-input-border: var(--border);
+  --c-input-radius: 8px;
+  --c-input-focus-bg: rgba(255, 255, 255, 0.06);
+  --c-input-focus-border: var(--accent);
+  --c-input-placeholder: var(--text-muted);
+  --c-error: #f87171;
+  --c-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a0a0a8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --c-select-option-bg: var(--bg-secondary);
+  --c-select-option-text: var(--text-primary);
+  --c-text-secondary: var(--text-secondary);
 }
 
 /* ========================================
-   Reset & Base
+   Site-specific Base Overrides
    ======================================== */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
 body {
-  font-family: var(--font-body);
   font-weight: 400;
-  color: var(--text-primary);
-  background-color: var(--bg-primary);
-  line-height: 1.7;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
 a {
   color: var(--accent);
-  text-decoration: none;
   transition: color var(--duration-fast) ease;
 }
 
 a:hover {
   color: var(--accent-hover);
-}
-
-ul, ol {
-  list-style: none;
-}
-
-::selection {
-  background-color: rgba(94, 234, 212, 0.2);
-  color: var(--text-primary);
 }
 
 /* Scrollbar */
@@ -108,13 +94,6 @@ ul, ol {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
-}
-
-/* Focus */
-*:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
 }
 
 /* Utility */
@@ -787,7 +766,6 @@ ul, ol {
   background-color: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 2rem 1.75rem;
   height: 100%;
   transition: all var(--duration-normal) var(--ease-out);
   position: relative;
@@ -829,6 +807,27 @@ ul, ol {
 
 .project-card--placeholder:hover .project-card-inner::before {
   opacity: 0;
+}
+
+.project-card-thumb {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.project-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.project-card:hover .project-card-thumb img {
+  transform: scale(1.05);
+}
+
+.project-card-body {
+  padding: 2rem 1.75rem;
 }
 
 .project-card-header {
@@ -943,80 +942,6 @@ ul, ol {
   text-align: left;
 }
 
-.top-form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.top-form-label {
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: var(--text-secondary);
-}
-
-.top-form-input,
-.top-form-select,
-.top-form-textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  transition: border-color var(--duration-normal) ease, background-color var(--duration-normal) ease;
-}
-
-.top-form-input::placeholder,
-.top-form-textarea::placeholder {
-  color: var(--text-muted);
-}
-
-.top-form-input:focus,
-.top-form-select:focus,
-.top-form-textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  background-color: rgba(255, 255, 255, 0.06);
-}
-
-.top-form-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a0a0a8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  padding-right: 2.5rem;
-  cursor: pointer;
-}
-
-.top-form-select option {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-}
-
-.top-form-textarea {
-  resize: vertical;
-  min-height: 8rem;
-}
-
-.top-form-error {
-  font-size: 0.75rem;
-  color: #f87171;
-  display: none;
-}
-
-.top-form-group.has-error .top-form-error {
-  display: block;
-}
-
-.top-form-group.has-error .top-form-input,
-.top-form-group.has-error .top-form-select,
-.top-form-group.has-error .top-form-textarea {
-  border-color: #f87171;
-}
-
 /* Submit Button */
 .top-form-submit {
   display: inline-flex;
@@ -1074,36 +999,14 @@ ul, ol {
   transform: translateX(4px);
 }
 
-/* Form Success */
-.top-form-success {
+/* Form Success Override */
+.form-success {
   max-width: 32rem;
   margin: 0 auto 2rem;
-  text-align: center;
-  padding: 3rem 1.5rem;
-  display: none;
 }
 
-.top-form-success.active {
-  display: block;
-}
-
-.top-form-success-icon {
-  font-size: 2rem;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-
-.top-form-success-title {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
+.form-success-title {
   font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.top-form-success-text {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
 }
 
 /* Contact Email */
@@ -1174,49 +1077,9 @@ ul, ol {
 }
 
 /* ========================================
-   Scroll Animations
-   ======================================== */
-.top-reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity var(--duration-slow) var(--ease-out),
-              transform var(--duration-slow) var(--ease-out);
-}
-
-.top-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger */
-.top-reveal[data-delay="100"] { transition-delay: 0.1s; }
-.top-reveal[data-delay="200"] { transition-delay: 0.2s; }
-.top-reveal[data-delay="300"] { transition-delay: 0.3s; }
-.top-reveal[data-delay="400"] { transition-delay: 0.4s; }
-.top-reveal[data-delay="500"] { transition-delay: 0.5s; }
-
-/* ========================================
-   Reduced Motion
+   Reduced Motion (site-specific)
    ======================================== */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .top-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
   .scroll-indicator-line {
     animation: none;
   }
