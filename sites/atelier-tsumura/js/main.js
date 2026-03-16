@@ -330,9 +330,9 @@
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    const hiddenIframe = document.getElementById('hidden_iframe');
 
+    form.addEventListener('submit', (e) => {
       let isValid = true;
 
       // Validate name
@@ -355,31 +355,26 @@
         emailGroup.classList.remove('has-error');
       }
 
-      if (isValid) {
-        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScR2M-zPmHHWlt-J96_YsoMY5OhRNxq15ETZvPt5jwk9yrdkQ/formResponse';
-        const serviceField = form.querySelector('#service');
-        const messageField = form.querySelector('#message');
-
-        const params = new URLSearchParams();
-        params.append('entry.593411620', nameField.value.trim());
-        params.append('entry.81051294', emailField.value.trim());
-        params.append('entry.854515103', serviceField ? serviceField.value : '');
-        params.append('entry.1283378040', messageField ? messageField.value.trim() : '');
-
-        fetch(GOOGLE_FORM_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: params.toString()
-        }).then(() => {
-          form.style.display = 'none';
-          if (success) success.classList.add('active');
-        }).catch(() => {
-          form.style.display = 'none';
-          if (success) success.classList.add('active');
-        });
+      if (!isValid) {
+        e.preventDefault();
+        return;
       }
+
+      // Valid: let the form submit natively to hidden iframe
     });
+
+    if (hiddenIframe) {
+      hiddenIframe.addEventListener('load', () => {
+        // Skip the initial empty load
+        if (!form.dataset.submitted) return;
+        form.style.display = 'none';
+        if (success) success.classList.add('active');
+      });
+
+      form.addEventListener('submit', () => {
+        form.dataset.submitted = 'true';
+      });
+    }
 
     // Remove error on input
     form.querySelectorAll('.form-input, .form-select, .form-textarea').forEach((input) => {

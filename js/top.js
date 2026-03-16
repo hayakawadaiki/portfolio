@@ -162,13 +162,10 @@
   function initContactForm() {
     var form = document.getElementById('contactForm');
     var success = document.getElementById('formSuccess');
+    var hiddenIframe = document.getElementById('hidden_iframe');
     if (!form || !success) return;
 
-    var GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScR2M-zPmHHWlt-J96_YsoMY5OhRNxq15ETZvPt5jwk9yrdkQ/formResponse';
-
     form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
       // Reset errors
       form.querySelectorAll('.top-form-group').forEach(function (group) {
         group.classList.remove('has-error');
@@ -176,8 +173,6 @@
 
       var nameInput = form.querySelector('#name');
       var emailInput = form.querySelector('#email');
-      var serviceInput = form.querySelector('#service');
-      var messageInput = form.querySelector('#message');
       var valid = true;
 
       if (!nameInput.value.trim()) {
@@ -191,29 +186,26 @@
         valid = false;
       }
 
-      if (!valid) return;
+      if (!valid) {
+        e.preventDefault();
+        return;
+      }
 
-      // Build form data for Google Forms
-      var params = new URLSearchParams();
-      params.append('entry.593411620', nameInput.value.trim());
-      params.append('entry.81051294', emailInput.value.trim());
-      params.append('entry.854515103', serviceInput.value);
-      params.append('entry.1283378040', messageInput.value.trim());
+      // Valid: let the form submit natively to hidden iframe
+    });
 
-      // Submit to Google Forms
-      fetch(GOOGLE_FORM_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString()
-      }).then(function () {
-        form.style.display = 'none';
-        success.classList.add('active');
-      }).catch(function () {
+    if (hiddenIframe) {
+      hiddenIframe.addEventListener('load', function () {
+        // Skip the initial empty load
+        if (!form.dataset.submitted) return;
         form.style.display = 'none';
         success.classList.add('active');
       });
-    });
+
+      form.addEventListener('submit', function () {
+        form.dataset.submitted = 'true';
+      });
+    }
   }
 
   // ========================================
